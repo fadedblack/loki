@@ -1,16 +1,16 @@
-const currentDirectory = '~';
-const supportedCommands = ["ls", "echo"];
+let currentDirectory = '~';
+const supportedCommands = ["cd", "echo"];
 
 const echo = function (args) {
   console.log(args.join(''));
 };
 
-const ls = function () {
-  
-}
+const cd = function (args) {
+  currentDirectory += args;
+};
 
 const executeCommand = function (command, args) {
-  const commandFunctions = [ls, echo];
+  const commandFunctions = [cd, echo];
 
   const functionToCall = supportedCommands.findIndex(function (commands) {
     return commands === command;
