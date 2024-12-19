@@ -1,7 +1,7 @@
 let currentPath = '~';
 
 const echo = function (args) {
-  console.log(args.join(''));
+  console.log(args.join(' '));
 };
 
 const cd = function (args) {
