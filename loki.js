@@ -1,5 +1,5 @@
 const currentDirectory = '~';
-const commandList = ["ls", "echo"];
+const supportedCommands = ["ls", "echo"];
 
 const echo = function (args) {
   console.log(args.join(''));
@@ -9,29 +9,29 @@ const ls = function () {
   
 }
 
-const execute = function (command, args) {
+const executeCommand = function (command, args) {
   const commandFunctions = [ls, echo];
 
-  const functionToCall = commandList.findIndex(function (commands) {
+  const functionToCall = supportedCommands.findIndex(function (commands) {
     return commands === command;
   });
 
   commandFunctions[functionToCall](args);
 };
 
-const validCommand = function (command) {
-  const isValidCommand = commandList.find(function (inBuiltCommand) {
+const isValidCommand = function (command) {
+  const isCommandExist = supportedCommands.find(function (inBuiltCommand) {
     return inBuiltCommand === command;
   });
 
-  return isValidCommand !== undefined;
+  return isCommandExist !== undefined;
 };
 
 const runCommand = function (commandArguments) {
   const [command, ...args] = commandArguments.split(' ');
 
-  if (validCommand(command)) {
-    execute(command, args);
+  if (isValidCommand(command)) {
+    executeCommand(command, args);
   }
 };
 
