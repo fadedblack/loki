@@ -1,3 +1,5 @@
+const E404 = "Command Not Found!!";
+
 let currentPath = '~';
 
 const echo = function (args) {
@@ -33,15 +35,20 @@ const runCommand = function (commandArguments, commandMap) {
   const commandExists = findCommand(command, commandMap);
 
   if (!commandExists) {
-    return "Command Not Found!!";
+    return 404;
   }
 
   const actualCommand = commandExists[1];
   return actualCommand(args);
 };
 
-const display = function (string) {
-  console.log(string);
+const display = function (code) {
+  switch (code) {
+    case 404:
+      return console.log(E404);
+    default:
+      return console.log(code);
+  }
 };
 
 const launchShell = function (commandMap) {
@@ -49,7 +56,9 @@ const launchShell = function (commandMap) {
   while (true) {
     const command = prompt('Loki `' + currentPath + '`:');
 
-    display(runCommand(command, commandMap));
+    const runStatus = runCommand(command, commandMap);
+
+    display(runStatus);
   }
 };
 
