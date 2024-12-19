@@ -1,4 +1,4 @@
-const E404 = "Command Not Found!!";
+const ERROR_INVALID_COMMAND = "Command Not Found!!";
 
 let currentPath = '~';
 
@@ -35,7 +35,7 @@ const runCommand = function (commandArguments, commandMap) {
   const commandExists = findCommand(command, commandMap);
 
   if (!commandExists) {
-    return 404;
+    return ERROR_INVALID_COMMAND;
   }
 
   const actualCommand = commandExists[1];
@@ -44,7 +44,7 @@ const runCommand = function (commandArguments, commandMap) {
 
 const display = function (code) {
   switch (code) {
-    case 404:
+    case ERROR_INVALID_COMMAND:
       return console.log(E404);
     default:
       return console.log(code);
