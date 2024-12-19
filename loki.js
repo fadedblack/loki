@@ -1,8 +1,25 @@
 const currentDirectory = '~';
+const commandList = ["ls", "echo"];
+
+const echo = function (args) {
+  console.log(args.join(''));
+};
+
+const ls = function () {
+  
+}
+
+const execute = function (command, args) {
+  const commandFunctions = [ls, echo];
+
+  const functionToCall = commandList.findIndex(function (commands) {
+    return commands === command;
+  });
+
+  commandFunctions[functionToCall](args);
+};
 
 const validCommand = function (command) {
-  const commandList = ["ls", "echo"];
-
   const isValidCommand = commandList.find(function (inBuiltCommand) {
     return inBuiltCommand === command;
   });
@@ -14,19 +31,16 @@ const runCommand = function (commandArguments) {
   const [command, ...args] = commandArguments.split(' ');
 
   if (validCommand(command)) {
-    execute(command);
+    execute(command, args);
   }
-
-  return [command, args];
 };
 
 const shell = function () {
   console.log('You are inside Loki');
   while (true) {
-    const command = prompt('You are currently in ' + currentDirectory + ':');
-    console.log('You entered: ', command);
+    const command = prompt('Loki `' + currentDirectory + '`:');
 
-    console.log(runCommand(command));
+    runCommand(command);
   }
 };
 
