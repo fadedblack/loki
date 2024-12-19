@@ -20,7 +20,7 @@ const commandMap = [
 ];
 
 
-const withCommands = function (command, commandMap) {
+const findCommand = function (command, commandMap) {
   const isCommandExist = commandMap.find(function (inBuiltCommand) {
     return inBuiltCommand[0] === command;
   });
@@ -30,7 +30,7 @@ const withCommands = function (command, commandMap) {
 
 const runCommand = function (commandArguments, commandMap) {
   const [command, ...args] = commandArguments.split(' ');
-  const commandExists = withCommands(command, commandMap);
+  const commandExists = findCommand(command, commandMap);
 
   if (!commandExists) {
     return "Command Not Found!!";
@@ -56,3 +56,4 @@ const launchShell = function (commandMap) {
 launchShell(commandMap);
 
 // haven't handled in correct arguments
+// should change the name of home based on current users name
