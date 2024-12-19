@@ -35,7 +35,7 @@ const runCommand = function (commandArguments) {
   }
 };
 
-const shell = function () {
+const launchShell = function () {
   console.log('You are inside Loki');
   while (true) {
     const command = prompt('Loki `' + currentDirectory + '`:');
@@ -44,4 +44,4 @@ const shell = function () {
   }
 };
 
-shell();
+launchShell();
