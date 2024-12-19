@@ -1,4 +1,4 @@
-let currentDirectory = '~';
+let currentPath = '~';
 const supportedCommands = ["pwd", "cd", "echo"];
 
 const echo = function (args) {
@@ -6,11 +6,11 @@ const echo = function (args) {
 };
 
 const cd = function (args) {
-  currentDirectory = args.join('');
+  currentPath = args.join('');
 };
 
 const pwd = function () {
-  console.log(currentDirectory);
+  console.log(currentPath);
 };
 
 const executeCommand = function (command, args) {
@@ -42,10 +42,14 @@ const runCommand = function (commandArguments) {
 const launchShell = function () {
   console.log('You are inside Loki');
   while (true) {
-    const command = prompt('Loki `' + currentDirectory + '`:');
+    const command = prompt('Loki `' + currentPath + '`:');
 
     runCommand(command);
   }
 };
 
 launchShell();
+
+// Space is not incorporated in echo function
+// haven't handled in correct commands
+// haven't handled in correct arguments
