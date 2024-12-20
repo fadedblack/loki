@@ -66,3 +66,4 @@ launchShell(commandMap);
 
 // haven't handled in correct arguments
 // should change the name of home based on current users name
+// directly use functions in map, use .name to get strings.
